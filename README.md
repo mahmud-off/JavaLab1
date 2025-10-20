@@ -16,22 +16,23 @@ firstProject/
 ├── .gitignore # Игнорируемые файлы для Git  
 └── firstProject.iml # Файл конфигурации модуля
 ```
-# [ЕСЛИ БУДЕТЕ ТАВИТЬ ОБЯЗАТЕЛЬНО СОЗДАЙТЕ В ПАПКЕ ПРОЕКТА ДИРЕКТОРИЮ "BD"]
-Это база данных где хранятся книжки
-Книжки после перезапуска программы подгружаются с этой директории
+# [ЕСЛИ БУДЕТЕ СТАВИТЬ ОБЯЗАТЕЛЬНО СОЗДАЙТЕ В ПАПКЕ ПРОЕКТА ДИРЕКТОРИЮ "BD"]()
+- Это база данных где хранятся книжки
+- Книжки после перезапуска программы подгружаются с этой директории
+
 ### Реализовано:
 - print all books --> id + book name   --> O(n)
-- 2. select book by id  --> O(1)  
+- select book by id  --> O(1)  
 - -------------------------> description + some action with this book :  
 -                                         1. read 
 -                                         2. edit
 -                                         3. save to file
 -                                         5. exit --> Go to the first menu
 -                                         6. show a short menu
-- 4. add --> add new book in library --> O(1)  
-- 5. delete --> delete book from library --> O(1)
-- 6. find book by Name --> O(n)  
-- 7. find by author --> O(n)  
-- 8. QUIT --> shutdown --> O(1)  
-- 9. Show a menu --> O(1)")
-## Махмудов Вадим 24КНТ-7
+- add --> add new book in library --> O(1)  
+- delete --> delete book from library --> O(1)
+- find book by Name --> O(n)  
+- find by author --> O(n)  
+- QUIT --> shutdown --> O(1)  
+- Show a menu --> O(1)")
+## [Махмудов Вадим 24КНТ-7]()
