@@ -76,7 +76,7 @@ public class Library {
         try {
             File file = new File(books.get(tmpID - 1).getPath());
             boolean delete = file.delete();
-            if (delete == true) {
+            if (delete) {
                 System.out.println("Book are removed!");
                 this.books.remove(tmpID - 1);
             }

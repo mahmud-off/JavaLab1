@@ -36,11 +36,13 @@ public class App {
 
     private void resetFromBD(){
         final File folder = new File("BD/");
-        if (folder != null) {
+        try{
             for (final File fileEntry : folder.listFiles()) {
                 library.loadNewBookFromBD(fileEntry);
                 //System.out.println(fileEntry.getName());
             }
+        }catch(NullPointerException er) {
+            System.out.println("Check your BD directory, " + er.getMessage());
         }
     }
 
@@ -92,9 +94,9 @@ public class App {
                         System.out.println("Something went wrong! Please check your input data -- ");
                         System.out.println(er + "\n");
                     }
-                    finally {
-                        break GAY;
-                    }
+
+                    break GAY;
+
                     //break;
                 }
                 case("5"):{ //findBook

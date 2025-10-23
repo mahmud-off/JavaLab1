@@ -78,6 +78,9 @@ public class Book {
 
     public void editBook(){
         Scanner in = new Scanner(System.in);
+
+        Boolean firstPart =  true;
+
         try {
             File file = new File(this.getPath());
 
@@ -94,8 +97,12 @@ public class Book {
                     throw new java.io.IOException("file exists");
                 }
                 else{
-                    file.renameTo(file2);
-                    file2.delete();
+                    Boolean renameCheck = file.renameTo(file2);
+                    Boolean deleteCheck =  file2.delete();
+                    if (!renameCheck || !deleteCheck){
+                        firstPart = false;
+                        System.out.println("Check your Book name and Author, We have some problems with creating a file!");
+                    }
                     break;
                 }
             }
@@ -106,24 +113,23 @@ public class Book {
             throw new RuntimeException(e);
         }
 
-        try(FileWriter writer = new FileWriter(this.getPath(), false))
-        {
-            System.out.println("Cool, send me a book text: ");
+        if(firstPart) {
+            try (FileWriter writer = new FileWriter(this.getPath(), false)) {
+                System.out.println("Cool, send me a book text: ");
 
-            String txt = "";
-            txt = in.nextLine();
-            while( txt != ""){
-                writer.write(txt);
-                writer.write("\n");
+                String txt = "";
                 txt = in.nextLine();
+                while (!txt.isEmpty()) {
+                    writer.write(txt);
+                    writer.write("\n");
+                    txt = in.nextLine();
+                }
+                writer.close();
+                System.out.println("Book has been edited!!!");
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
             }
-            writer.close();
-            System.out.println("Book has been edited!!!");
         }
-        catch(IOException ex){
-            System.out.println(ex.getMessage());
-        }
-
 
     }
 
