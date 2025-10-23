@@ -1,9 +1,7 @@
-package pkg;
+package vadim.com.lib.pkg;
 
-import Library.Library;
-import Library.Book;
+import vadim.com.lib.pkg.library.Library;
 
-import javax.swing.*;
 import java.io.File;
 import java.util.Scanner;
 
@@ -12,21 +10,23 @@ public class App {
     private Library library = new Library();
 
     private void menu(){
-        System.out.println("APP STRUCTURE:\n" +
-                "1. print all books --> id + book name   --> O(n)\n" +
-                "    2. select book by id  --> O(1)\n" +
-                "    -------------------------> description + some action with this book :\n" +
-                "                               1. read\n" +
-                "                               2. edit\n" +
-                "                               3. save to file\n" +
-                "                               5. exit --> Go to the first menu\n" +
-                "                               6. show a short menu\n" +
-                "    4. add --> add new book in library --> O(1)\n" +
-                "    5. delete --> delete book from library --> O(1) \n " +
-                "    6. find book by Name --> O(n)\n" +
-                "    7. find by author --> O(n)\n" +
-                "    8. QUIT --> shutdown --> O(1)\n" +
-                "    9. Show a menu --> O(1)");
+        System.out.println("""
+                    APP STRUCTURE:
+                    1. print all books --> id + book name   --> O(n)
+                    2. select book by id  --> O(1)
+                    -------------------------> description + some action with this book :
+                                               1. read
+                                               2. edit
+                                               3. save to file
+                                               5. exit --> Go to the first menu
+                                               6. show a short menu
+                    3. add --> add new book in library --> O(1)
+                    4. delete --> delete book from library --> O(1)
+                    5. find book by Name --> O(n)
+                    6. find by author --> O(n)
+                    7. QUIT --> shutdown --> O(1)
+                    8. Show a menu --> O(1)
+                    """);
     }
 
 
@@ -36,9 +36,11 @@ public class App {
 
     private void resetFromBD(){
         final File folder = new File("BD/");
-        for (final File fileEntry : folder.listFiles()) {
-            library.loadNewBookFromBD(fileEntry);
-            //System.out.println(fileEntry.getName());
+        if (folder != null) {
+            for (final File fileEntry : folder.listFiles()) {
+                library.loadNewBookFromBD(fileEntry);
+                //System.out.println(fileEntry.getName());
+            }
         }
     }
 
@@ -54,17 +56,17 @@ public class App {
             try{
                 choose = in.nextLine();
             }
-            catch(Error er){
+            catch(Exception er){
                 System.out.println(er.getMessage());
             }
 
             GAY:
             switch (choose){
                 case("1"):{
-                    library.printListOfBooks();
+                    library.printListOfBooks(); //printBook
                     break;
                 }
-                case("2"):{
+                case("2"):{ //selectBookByID
                     try {
                         library.selectBookByID();
                         menu();
@@ -73,20 +75,16 @@ public class App {
                         System.out.println("Something went wrong! Please check your input data -- ");
                         System.out.println(er + "\n");
                     }
-                    finally {
-                        break GAY;
-                    }
+
+                    break GAY;
+
                     //break;
                 }
-                case("3"):{
-                    ;
-                    break;
-                }
-                case("4"):{
+                case("3"):{ // addNewBook
                     library.addBook();
                     break;
                 }
-                case("5"):{
+                case("4"):{ //deleteBook
                     try {
                         library.deleteBookByID();
                         break;
@@ -99,18 +97,18 @@ public class App {
                     }
                     //break;
                 }
-                case("6"):{
+                case("5"):{ //findBook
                     library.findBookByName();
                     break;
                 }
-                case("7"):{
+                case("6"):{ //findBookByAuthor
                     library.findBookByAuthor();
                     break;
                 }
-                case("8"):{
+                case("7"):{ //Exit
                     break Loop;
                 }
-                case("9"): {
+                case("8"):{ //Show menu
                     menu();
                     break;
                 }

@@ -1,4 +1,4 @@
-package Library;
+package vadim.com.lib.pkg.library;
 
 import java.io.*;
 import java.util.Scanner;
@@ -65,14 +65,12 @@ public class Book {
         System.out.println(this.author);
     }
     public void printBookText(){
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(this.getPath()));
+        try (BufferedReader reader = new BufferedReader(new FileReader(this.getPath()))){
             String line;
 
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
             }
-            reader.close();
         } catch (IOException e) {
             System.out.println("Ошибка чтения файла: " + e.getMessage());
         }
@@ -104,9 +102,7 @@ public class Book {
 
 
         }
-        catch (Error er){
-            System.out.println("Ошибка в чтении файла: " + er.getMessage());
-        } catch (IOException e) {
+        catch (IOException e) {
             throw new RuntimeException(e);
         }
 
@@ -144,8 +140,7 @@ public class Book {
             writer.write(this.getAuthor());
             writer.write("\n");
 
-            try {
-                BufferedReader reader = new BufferedReader(new FileReader(this.getPath()));
+            try (BufferedReader reader = new BufferedReader(new FileReader(this.getPath()))){
                 String line;
                 //int lineNumber = 1;
 
@@ -154,11 +149,10 @@ public class Book {
                     writer.write("\n");
                     //lineNumber++;
                 }
-                reader.close();
+
             } catch (IOException e) {
                 System.out.println("Ошибка чтения файла: " + e.getMessage());
             }
-            writer.close();
 
             System.out.println("File loaded!");
         }

@@ -6,19 +6,17 @@ firstProject/
 ├── .idea/  
 ├── out/ # Скомпилированные файлы
 ├── BD/ # Хранилище данных 
-├── src/ # Исходный код приложения  
-│ │ ├── Library/ # Модуль библиотечной системы
-│ │ │ ├── Book.java # Класс для работы с книгами  
-│ │ │ └── Library.java # Основная логика библиотеки
-│ │ ├── pkg/ # Дополнительные пакеты
-│ │ │ └── App.java # Класс приложения 
-│ │ └── Main.java # Главный класс для запуска 
+├── src/ # Исходный код приложения 
+│ │ └── vadim.com.lib.pkg 
+│ │ │ ├── library/ # Модуль библиотечной системы
+│ │ │ │ ├── Book.java # Класс для работы с книгами  
+│ │ │ │ └── Library.java # Основная логика библиотеки
+│ │ │ ├── pkg/ # Дополнительные пакеты
+│ │ │ │ └── App.java # Класс приложения 
+│ │ │ └── Main.java # Главный класс для запуска 
 ├── .gitignore # Игнорируемые файлы для Git  
 └── firstProject.iml # Файл конфигурации модуля
 ```
-# [ЕСЛИ БУДЕТЕ СТАВИТЬ ОБЯЗАТЕЛЬНО СОЗДАЙТЕ В ПАПКЕ ПРОЕКТА ДИРЕКТОРИЮ "BD"]()
-- Это база данных где хранятся книжки
-- Книжки после перезапуска программы подгружаются с этой директории
 
 ### Реализовано:
 - print all books --> id + book name   --> O(n)
@@ -29,8 +27,8 @@ firstProject/
 -                                         3. save to file
 -                                         5. exit --> Go to the first menu
 -                                         6. show a short menu
-- add --> add new book in library --> O(1)  
-- delete --> delete book from library --> O(1)
+- add --> add new book in vadim.com.lib.pkg.library --> O(1)  
+- delete --> delete book from vadim.com.lib.pkg.library --> O(1)
 - find book by Name --> O(n)  
 - find by author --> O(n)  
 - QUIT --> shutdown --> O(1)  

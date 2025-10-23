@@ -1,4 +1,4 @@
-package Library;
+package vadim.com.lib.pkg.library;
 
 import java.io.*;
 import java.util.HashMap;
@@ -33,12 +33,12 @@ public class Library {
 
             String txt = "";
             txt = in.nextLine();
-            while( txt != ""){
+            while(!txt.isEmpty()){
                 writer.write(txt);
                 writer.write("\n");
                 txt = in.nextLine();
             }
-            writer.close();
+
             System.out.println("Book pushed!");
         }
         catch(IOException ex){
@@ -80,8 +80,9 @@ public class Library {
                 System.out.println("Book are removed!");
                 this.books.remove(tmpID - 1);
             }
+
         }
-        catch (Error er){
+        catch (Exception er){
             System.out.println("Ошибка в чтении файла: " + er.getMessage());
         }
     }
@@ -114,6 +115,7 @@ public class Library {
         for( int i = 0; i < books.size(); i++){
             if(Objects.equals(author, books.get(i).getAuthor())){
                 System.out.println(i+1 + " " + books.get(i).getName());
+                print = false;
             }
         }
         if(print) {
@@ -122,12 +124,13 @@ public class Library {
     }
 
     private void showBookMenu(){
-        System.out.println("1. read\n" +
-                "        2. edit\n" +
-                "        3. save to file\n" +
-                "        4. load from file\n" +
-                "        5. exit\n" +
-                "        6. show menu");
+        System.out.println("""
+                        1. read
+                        2. edit
+                        3. save to file
+                        4. exit
+                        5. show menu
+                """);
     }
 
     public void selectBookByID(){
@@ -163,12 +166,9 @@ public class Library {
                     break;
                 }
                 case ("4"): {
-                    break;
-                }
-                case ("5"): {
                     break Loop;
                 }
-                case ("6"): {
+                case ("5"): {
                     showBookMenu();
                     break;
                 }
